@@ -2,13 +2,15 @@
 
 A small Pygame playground for math/CS curiosities. Left side: pick a mode and drag sliders. Right side: watch it update in real time.
 
-## What you can do
-- Mandelbrot: click to zoom in, right-click to zoom out; tweak iteration count.
-- Twin primes: plot primes up to N and show lines for twin pairs.
-- Collatz: chart the steps from any starting number.
-- Sieve: run the sieve of Eratosthenes step by step with a reset.
-- Birthday paradox: compare the formula vs a quick Monte Carlo for shared birthdays.
-- Hash timing: time SHA-256 vs Argon2id and show how many leading bits match.
+⚠️ Heads-up: this was my first high-def Pygame project, so some modes can feel laggy/slow when you crank settings.
+
+## What you can do (and the idea behind it)
+- Mandelbrot: click to zoom in, right-click to zoom out; tweak iteration count. It’s just iterating `z = z^2 + c` per pixel and counting when it “escapes”.
+- Twin primes: plot primes up to N and show lines for twin pairs. Uses the sieve to find primes, then picks pairs (p, p+2).
+- Collatz: chart the steps from any starting number. Follows the simple rule: even → n/2, odd → 3n+1 until it hits 1.
+- Sieve: run the sieve of Eratosthenes step by step with a reset. Marks multiples of each prime to leave only primes.
+- Birthday paradox: compare the formula vs a quick Monte Carlo for shared birthdays. Formula multiplies the “no collision” chances; sim drops random birthdays to see collisions.
+- Hash timing: time SHA-256 vs Argon2id and show how many leading bits match. It hashes random data, times both, and compares leading equal bits of the outputs.
 
 ## How it works (quickly)
 - Uses `pygame` for drawing and simple buttons/sliders.
