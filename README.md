@@ -1,33 +1,32 @@
 ﻿# MathsSandbox
 
-A compact, student-friendly Pygame sandbox that bundles several math/CS visualizations and interactive demos in a single window. The left panel lets you switch modes and tweak parameters; the right canvas visualizes the results live.
+A small Pygame playground for math/CS curiosities. Left side: pick a mode and drag sliders. Right side: watch it update in real time.
 
-## What's inside
-- Mandelbrot explorer: zoom/pan via clicks; adjust iteration depth.
-- Twin primes: plot primes up to N and connect twin pairs.
-- Collatz trajectories: graph the sequence for any starting integer.
-- Sieve of Eratosthenes: step-by-step marking with reset and limit control.
-- Birthday paradox: formula vs Monte Carlo bars for collision probability.
-- Hash timing: compare iterated SHA-256 and Argon2id and show leading-bit matches.
+## What you can do
+- Mandelbrot: click to zoom in, right-click to zoom out; tweak iteration count.
+- Twin primes: plot primes up to N and show lines for twin pairs.
+- Collatz: chart the steps from any starting number.
+- Sieve: run the sieve of Eratosthenes step by step with a reset.
+- Birthday paradox: compare the formula vs a quick Monte Carlo for shared birthdays.
+- Hash timing: time SHA-256 vs Argon2id and show how many leading bits match.
 
-## How it works
-- Built with `pygame` for rendering and simple UI elements (buttons/sliders).
-- Modes share a control panel (left) and a canvas (right); each mode registers its own sliders/buttons and rendering logic.
-- Numerical heavy lifting uses Python stdlib + `numpy` for the Mandelbrot grid and `argon2-cffi` for Argon2 hashing.
+## How it works (quickly)
+- Uses `pygame` for drawing and simple buttons/sliders.
+- Each mode registers its own controls; the left panel handles layout.
+- `numpy` helps with the Mandelbrot grid; `argon2-cffi` provides Argon2.
 
-## Running
+## Run it
 ```bash
 python sanbox.py
 ```
-(Ensure `pygame`, `numpy`, and `argon2-cffi` are installed in your environment.)
+Install deps if needed: `pygame`, `numpy`, `argon2-cffi`.
 
 ## Controls
-- Mode buttons: left panel top.
-- Sliders: adjust per-mode parameters (positioned below the mode list).
-- Canvas interactions: Mandelbrot supports left-click zoom in, right-click zoom out; other modes are view-only unless noted.
-- Keyboard: `Esc` to quit.
+- Mode buttons on the left; sliders sit underneath them.
+- Canvas: Mandelbrot supports left-click zoom in, right-click zoom out; others are mostly view-only.
+- Press `Esc` to quit.
 
-## Notes for students
-- Try varying limits/iterations to see how complexity scales in time/visual density.
-- The sieve mode is step-based—great for classroom demos of prime filtering.
-- Hash mode shows timing differences and a quick “leading equal bits” metric to spark discussion about collision intuition.
+## Tips
+- Raise the limits/iterations to see how visuals and runtimes change.
+- Use the sieve mode to show how primes get crossed out one pass at a time.
+- Hash mode is just a quick timing/bit-match demo, not a full security test.
