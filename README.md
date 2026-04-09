@@ -2,7 +2,7 @@
 
 A small Pygame playground for math/CS curiosities. Left side: pick a mode and drag sliders. Right side: watch it update in real time.
 
-⚠️ Heads-up: this was my first high-def Pygame project, so some modes can feel laggy/slow when you crank settings.
+⚠️ this was my first high-def Pygame project, so some modes can feel quite laggy/slow when you crank settings or just on running. Need to learn how to make my code more efficient in that way too.
 
 ## What you can do (and the idea behind it)
 - Mandelbrot: click to zoom in, right-click to zoom out; tweak iteration count. It’s just iterating `z = z^2 + c` per pixel and counting when it “escapes”.
