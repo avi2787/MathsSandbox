@@ -1,27 +1,102 @@
-﻿# MathsSandbox
+# MathsSandbox
 
-A small Pygame playground for math/CS curiosities. Left side: pick a mode and drag sliders. Right side: watch it update in real time.
+A Pygame-based sandbox for exploring maths and CS ideas interactively.
 
-⚠️ this was my first high-def Pygame project, so some modes can feel quite laggy/slow when you crank settings or just on running. Need to learn how to make my code more efficient in that way too.
+Left side: pick a mode and tweak parameters.  
+Right side: see everything update in real time.
 
-## What you can do (and the idea behind it)
-- Mandelbrot: click to zoom in, right-click to zoom out; tweak iteration count. It’s just iterating `z = z^2 + c` per pixel and counting when it “escapes”.
-- Twin primes: plot primes up to N and show lines for twin pairs. Uses the sieve to find primes, then picks pairs (p, p+2).
-- Collatz: chart the steps from any starting number. Follows the simple rule: even → n/2, odd → 3n+1 until it hits 1.
-- Sieve: run the sieve of Eratosthenes step by step with a reset. Marks multiples of each prime to leave only primes.
-- Birthday paradox: compare the formula vs a quick Monte Carlo for shared birthdays. Formula multiplies the “no collision” chances; sim drops random birthdays to see collisions.
-- Hash timing: time SHA-256 vs Argon2id and show how many leading bits match. It hashes random data, times both, and compares leading equal bits of the outputs.
+⚠️ This was my first higher-resolution Pygame project, so some modes can get slow when you push the settings. Optimising performance is something I still need to improve.
+---
 
-## How it works (quickly)
-- Uses `pygame` for drawing and simple buttons/sliders.
-- Each mode registers its own controls; the left panel handles layout.
-- `numpy` helps with the Mandelbrot grid; `argon2-cffi` provides Argon2.
+## What you can do
 
-## Run it
+### Mandelbrot Set
+- Left-click to zoom in, right-click to zoom out  
+- Adjustable iteration count  
+
+**How it works**
+- Each pixel maps to a complex number c  
+- Iterates z = z² + c starting from z = 0  
+- Stops when |z| > 2 or max iterations reached  
+- Uses the iteration count to colour each pixel  
+
+**Notes**
+- Increasing iterations reveals more detail near the boundary  
+- Performance depends heavily on resolution × iteration count  
+---
+
+### Twin Primes
+- Plots primes up to a limit  
+- Draws lines between twin pairs (p, p+2)  
+
+**How it works**
+- Uses the sieve of Eratosthenes to generate primes  
+- Filters pairs with difference = 2  
+---
+
+### Collatz Conjecture
+- Visualises the sequence for a chosen starting number  
+
+**How it works**
+- Applies:
+  - even → n / 2  
+  - odd → 3n + 1  
+- Runs until it reaches 1  
+- Tracks number of steps  
+
+---
+
+### Sieve (step-by-step)
+- Shows how primes are generated visually  
+
+**How it works**
+- Iteratively marks multiples of each prime  
+- Leaves only primes unmarked  
+
+---
+
+### Birthday Paradox
+- Compares formula vs simulation  
+
+**How it works**
+- Formula: multiplies “no shared birthday” probabilities  
+- Monte Carlo: generates random birthdays and checks collisions  
+
+**Notes**
+- Shows how simulation and theory line up (or don’t)  
+---
+
+### Hash Timing (SHA-256 vs Argon2id)
+- Compares hashing performance and output behaviour  
+
+**How it works**
+- Generates random input  
+- Computes hashes using:
+  - SHA-256  
+  - Argon2id (argon2-cffi)  
+- Measures time taken  
+- Compares number of matching leading bits  
+
+**Notes**
+- Demonstrates performance vs security trade-offs  
+- Not meant to be a full cryptographic analysis  
+---
+
+## How it’s structured
+- Built using `pygame` for rendering and UI  
+- Each mode handles its own logic and parameters  
+- A shared UI system manages:
+  - mode selection  
+  - sliders  
+  - layout  
+
+- `numpy` is used for Mandelbrot grid calculations  
+- `argon2-cffi` is used for Argon2 hashing  
+---
+
+## Running it
 ```bash
-python sanbox.py
-```
-Install deps if needed: `pygame`, `numpy`, `argon2-cffi`.
+python sandbox.py
 
 ## Controls
 - Mode buttons on the left; sliders sit underneath them.
